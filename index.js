@@ -28,6 +28,7 @@ function loadpk(){
             'ghost': '#907ad6',
             'fire': '#ffadad',
             'normal': '#ffe8d6',
+            'fighting' :'#e56b6f'
 
         };
 
