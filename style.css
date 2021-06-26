@@ -22,3 +22,10 @@ div.box {
     
 }
 
+.golpes {
+    border-radius: 10px;
+    padding: 5px;
+    display: flex;
+    margin: 10px auto 0px auto;
+}
+

@@ -20,6 +20,20 @@ function loadpk(){
         // alterando cor de fundo de acordo com o tipo do pokemon
         let cor = document.getElementById("container");
 
+        var golpes = {
+            'Golpe_1': data['moves']['0']['move']['name'],
+            'Golpe_2': data['moves']['1']['move']['name'],
+            'Golpe_3': data['moves']['2']['move']['name'],
+
+        }
+
+        
+        //document.getElementById("btn1").innerHTML = golpes['Golpe_1'];
+        document.querySelector("#btn1").setAttribute("value", `${golpes['Golpe_1']}`);
+        document.querySelector("#btn2").setAttribute("value", `${golpes['Golpe_2']}`);
+        document.querySelector("#btn3").setAttribute("value", `${golpes['Golpe_3']}`);
+        
+
         var tipos = {
             'water': '#9bf6ff',
             'electric': '#fdffb6',
@@ -28,8 +42,17 @@ function loadpk(){
             'ghost': '#907ad6',
             'fire': '#ffadad',
             'normal': '#ffe8d6',
-            'fighting' :'#e56b6f'
-
+            'fighting' :'#e56b6f',
+            'bug' : '#b5c99a',
+            'psychic': '#ff87ab',
+            'rock' : '#bcb8b1',
+            'ground' : '#f19c79',
+            'ice' : '#c4fff9',
+            'flying' : '#fff9ec',
+            'dragon' : '#68d8d6',
+            'dark' : '#4f518c',
+            'steel' : '#e5d9f2',
+            'fairy' : '#f7aef8'
         };
 
         if(data['types'].length == 1){
@@ -57,45 +80,25 @@ function loadpk(){
     });
 }
 
+
+function loadpk_golpe(golpe){
+
+    let url = `https://pokeapi.co/api/v2/move/${golpe}`;
+    fetch(url)
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        console.clear();
+        console.log(data);
+        document.getElementById("ataque").innerHTML = data['power'];
+        
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+}
+
 document.getElementById("btn").onclick = loadpk;
 
 
-/*if(data['types'].length == 1){
-            if(tipo == 'water'){
-                cor.style.backgroundColor = '#9bf6ff';
-            } else if(tipo == 'electric'){
-                cor.style.backgroundColor = '#fdffb6';
-            } else if(tipo == 'fire'){
-                cor.style.backgroundColor = '#ffadad';
-            } else if(tipo == 'grass'){
-                cor.style.backgroundColor = '#caffbf';
-            } else if(tipo == 'normal'){
-                cor.style.backgroundColor = '#ffe8d6';
-            } else if(tipo == 'fighting'){
-                cor.style.backgroundColor = '#e56b6f';
-            } else if(tipo == 'bug'){
-                cor.style.backgroundColor = '#b5c99a';
-            } else if(tipo == 'poison'){
-                cor.style.backgroundColor = '#e0aaff';
-            } else if(tipo == 'psychic'){
-                cor.style.backgroundColor = '#ff87ab';
-            } else if(tipo == 'rock'){
-                cor.style.backgroundColor = '#bcb8b1';
-            } else if(tipo == 'ground'){
-                cor.style.backgroundColor = '#f19c79';
-            } else if(tipo == 'ghost'){
-                cor.style.backgroundColor = '#907ad6';
-            } else if(tipo == 'ice'){
-                cor.style.backgroundColor = '#c4fff9';
-            } else if(tipo == 'flying'){
-                cor.style.backgroundColor = '#fff9ec';
-            } else if(tipo == 'dragon'){
-                cor.style.backgroundColor = '#68d8d6';
-            } else if(tipo == 'dark'){
-                cor.style.backgroundColor = '#4f518c';
-            } else if(tipo == 'steel'){
-                cor.style.backgroundColor = '#e5d9f2';
-            } else if(tipo == 'fairy'){
-                cor.style.backgroundColor = '#f7aef8';
-            } 
-        }*/
